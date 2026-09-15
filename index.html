@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New England Bug Doctrine</title>
+<meta name="description" content="A layered, seasonal defense against ticks, black flies, mosquitoes, deer flies and greenheads across New England — built for two hikers who want the woods back.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#F1F4EE; --paper-2:#E7ECE3; --paper-3:#DCE3D7;
+  --ink:#1B2620; --ink-2:#44544A; --ink-3:#6B7C71;
+  --contour:#8A6A43; --spruce:#3F6B4A; --spruce-soft:#3F6B4A1F;
+  --water:#2E6C8E; --alarm:#A3342B; --amber:#8A6110; --tide:#1F6F6B;
+  --rule:#C7D1C1;
+  --barlabel:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121714; --paper-2:#1A211C; --paper-3:#232C26;
+    --ink:#E4E9E1; --ink-2:#AFBCB2; --ink-3:#88978C;
+    --contour:#C09A6C; --spruce:#84BB92; --spruce-soft:#84BB9222;
+    --water:#78B6D6; --alarm:#E4877C; --amber:#D9A94A; --tide:#5FB8B2;
+    --rule:#2E3A31;
+    --barlabel:#121714;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121714; --paper-2:#1A211C; --paper-3:#232C26;
+  --ink:#E4E9E1; --ink-2:#AFBCB2; --ink-3:#88978C;
+  --contour:#C09A6C; --spruce:#84BB92; --spruce-soft:#84BB9222;
+  --water:#78B6D6; --alarm:#E4877C; --amber:#D9A94A; --tide:#5FB8B2;
+  --rule:#2E3A31;
+  --barlabel:#121714;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16.5px; line-height:1.62; margin:0;
+}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:780px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+
+.lab{font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.11em;font-weight:600;font-size:.82rem;color:var(--ink-3)}
+
+header.top{border-bottom:2px solid var(--ink);padding-block:44px 18px}
+.quad{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+h1{font-family:Bitter,Georgia,serif;font-weight:700;font-size:clamp(2rem,6.5vw,3.1rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+.dek{font-size:1.14rem;color:var(--ink-2);margin:0;max-width:62ch;text-wrap:pretty}
+.dek b{color:var(--ink);font-weight:600}
+
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 93%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);margin-bottom:8px}
+nav.jump ul{display:flex;gap:18px;list-style:none;margin:0;padding:10px 0;overflow-x:auto;scrollbar-width:none}
+nav.jump ul::-webkit-scrollbar{display:none}
+nav.jump a{font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.09em;font-weight:600;font-size:.86rem;color:var(--ink-3);text-decoration:none;white-space:nowrap}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--spruce)}
+
+section{padding-block:44px 0;scroll-margin-top:60px}
+h2{font-family:Bitter,Georgia,serif;font-weight:600;font-size:1.62rem;line-height:1.2;letter-spacing:-.01em;margin:0 0 6px;text-wrap:balance}
+h2 .n{color:var(--contour);font-weight:400;margin-right:.5em;font-variant-numeric:tabular-nums}
+h3{font-family:Bitter,Georgia,serif;font-weight:600;font-size:1.1rem;margin:30px 0 6px;text-wrap:balance}
+.sub{color:var(--ink-3);margin:0 0 22px;font-size:.98rem;max-width:66ch}
+p{margin:0 0 15px;max-width:66ch}
+a{color:var(--water)}
+strong{font-weight:600}
+
+.thesis{border-left:3px solid var(--spruce);padding:2px 0 2px 20px;margin:26px 0;font-family:Bitter,Georgia,serif;font-size:1.16rem;line-height:1.5;color:var(--ink)}
+
+/* phenology */
+.chartbox{border:1px solid var(--rule);border-radius:3px;background:var(--paper-2);padding:18px 0 6px;margin:22px 0 10px}
+.scroller{overflow-x:auto}
+.gantt{min-width:640px;padding-inline:18px}
+.gantt .months{display:grid;grid-template-columns:136px repeat(12,1fr);border-bottom:1px solid var(--rule);padding-bottom:5px;margin-bottom:9px}
+.gantt .months span{font-family:"Barlow Condensed",Arial Narrow,sans-serif;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center}
+.gantt .months span:first-child{text-align:left}
+.row{display:grid;grid-template-columns:136px repeat(12,1fr);align-items:center;min-height:32px;position:relative}
+.row::after{content:"";position:absolute;left:136px;right:0;top:0;bottom:0;background:repeating-linear-gradient(to right,transparent,transparent calc(8.3333% - 1px),var(--rule) calc(8.3333% - 1px),var(--rule) 8.3333%);opacity:.55;pointer-events:none}
+.row .name{font-family:"Barlow Condensed",Arial Narrow,sans-serif;font-size:.9rem;letter-spacing:.03em;color:var(--ink-2);padding-right:10px;line-height:1.15}
+.row .name i{color:var(--ink-3)}
+.bar{height:15px;border-radius:2px;position:relative;z-index:1;display:flex;align-items:center}
+.bar.peak{height:19px}
+.bar span{font-family:"Barlow Condensed",Arial Narrow,sans-serif;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding-left:7px;white-space:nowrap;color:var(--barlabel)}
+.t-dis{background:var(--alarm)} .t-mis{background:var(--amber)} .t-coast{background:var(--tide)}
+.faint{opacity:.34}
+.key{display:flex;gap:20px;flex-wrap:wrap;padding:14px 18px 6px;border-top:1px solid var(--rule);margin-top:10px}
+.key div{display:flex;align-items:center;gap:7px;font-size:.86rem;color:var(--ink-2)}
+.swatch{width:14px;height:11px;border-radius:2px;flex:none}
+
+/* regions */
+.regions{display:grid;gap:0;margin:24px 0 8px;border-top:1px solid var(--rule)}
+.region{border-bottom:1px solid var(--rule);padding:18px 0}
+.region .head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:3px}
+.region h3{margin:0;font-size:1.06rem}
+.region .states{font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.09em;font-size:.8rem;color:var(--contour)}
+.region p{margin:6px 0 0;font-size:.97rem}
+.region .verdict{margin-top:9px;font-size:.93rem;color:var(--ink-2);border-left:2px solid var(--spruce);padding-left:12px}
+
+/* threats */
+.threats{display:grid;margin:24px 0 8px;border-top:1px solid var(--rule)}
+.threat{display:grid;grid-template-columns:5px 1fr;border-bottom:1px solid var(--rule)}
+.threat .stripe{background:var(--amber)}
+.threat.disease .stripe{background:var(--alarm)}
+.threat.coast .stripe{background:var(--tide)}
+.threat .body{padding:18px 0 18px 18px}
+.threat h3{margin:0 0 3px;font-size:1.08rem}
+.threat .sci{font-style:italic;color:var(--ink-3);font-size:.9rem;font-family:Bitter,Georgia,serif}
+.threat p{margin:8px 0 0;font-size:.97rem}
+.counter{margin-top:11px;padding-top:10px;border-top:1px dotted var(--rule);font-size:.95rem}
+.counter b{font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.09em;font-size:.82rem;color:var(--spruce);display:block;margin-bottom:2px}
+
+/* kit */
+.tier{margin:30px 0 0}
+.tierhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.tierhead h3{margin:0}
+.cost{font-family:"Barlow Condensed",Arial Narrow,sans-serif;font-size:.9rem;letter-spacing:.05em;color:var(--contour);font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem;margin-top:12px}
+th{font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.09em;font-size:.8rem;color:var(--ink-3);text-align:left;font-weight:600;border-bottom:1px solid var(--ink-2);padding:0 10px 5px 0}
+td{border-bottom:1px solid var(--rule);padding:9px 10px 9px 0;vertical-align:top}
+td:last-child,th:last-child{padding-right:0}
+td.q{font-variant-numeric:tabular-nums;color:var(--ink-3);white-space:nowrap}
+.why{display:block;color:var(--ink-3);font-size:.89rem;line-height:1.45;margin-top:1px}
+
+/* protocol */
+ol.proto{list-style:none;counter-reset:s;padding:0;margin:20px 0 0}
+ol.proto>li{counter-increment:s;position:relative;padding:0 0 22px 46px;border-left:1px solid var(--rule);margin-left:13px}
+ol.proto>li:last-child{border-left-color:transparent;padding-bottom:4px}
+ol.proto>li::before{content:counter(s);position:absolute;left:-13px;top:0;width:26px;height:26px;border-radius:50%;background:var(--paper);border:1px solid var(--ink-2);color:var(--ink-2);font-family:"Barlow Condensed",Arial Narrow,sans-serif;font-size:.88rem;display:flex;align-items:center;justify-content:center}
+ol.proto h3{margin:0 0 4px;font-size:1.04rem}
+ol.proto p{margin:0;font-size:.96rem}
+.when{font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.09em;font-size:.78rem;color:var(--contour);display:block}
+
+ul.tight{padding-left:19px;margin:8px 0 0;max-width:66ch}
+ul.tight li{margin-bottom:7px;font-size:.96rem}
+
+.skip td:first-child{color:var(--ink);width:36%}
+.skip .verdict{color:var(--alarm);font-family:"Barlow Condensed",Arial Narrow,sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;display:block}
+
+.note{background:var(--spruce-soft);border:1px solid var(--rule);border-radius:3px;padding:15px 17px;margin:22px 0;font-size:.95rem}
+.note p{margin:0;max-width:none}
+.note p+p{margin-top:9px}
+.note .lab{display:block;margin-bottom:5px;color:var(--spruce)}
+.note.warn{background:#A3342B12;border-color:#A3342B44}
+.note.warn .lab{color:var(--alarm)}
+
+footer{margin-top:64px;padding-top:22px;border-top:2px solid var(--ink);font-size:.88rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}
+footer p{max-width:none}
+:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+@media (max-width:520px){body{font-size:16px}.threat .body{padding-left:14px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="quad">
+    <span class="lab">New England &middot; Field Manual</span>
+    <span class="lab">Two-person kit &middot; Rev. Sept 2026</span>
+  </div>
+  <h1>New England Bug Doctrine</h1>
+  <p class="dek">A layered, seasonal defense for <b>the Lyme epicenter of North America</b> &mdash; ticks, black flies, mosquitoes, deer flies and greenheads, each with a different answer. Chemistry where it's proven, mesh where it isn't.</p>
+</header>
+
+<nav class="jump" aria-label="Sections">
+  <ul>
+    <li><a href="#thesis">Doctrine</a></li>
+    <li><a href="#calendar">Season</a></li>
+    <li><a href="#regions">Regions</a></li>
+    <li><a href="#threats">Threats</a></li>
+    <li><a href="#terrain">Terrain</a></li>
+    <li><a href="#moments">Three Moments</a></li>
+    <li><a href="#kit">The Kit</a></li>
+    <li><a href="#armor">Full Armor</a></li>
+    <li><a href="#pack">Packs</a></li>
+    <li><a href="#protocol">Protocol</a></li>
+    <li><a href="#tinker">Tinkering</a></li>
+    <li><a href="#skip">Skip List</a></li>
+  </ul>
+</nav>
+
+<section id="thesis">
+  <h2><span class="n">01</span>The doctrine</h2>
+  <p class="sub">Three corrections to how almost every &ldquo;bug protection&rdquo; list is built</p>
+
+  <p>Most bug guides &mdash; including the two drafts this one replaces &mdash; are about <em>what to wear while walking</em>. That's maybe half the problem. When people say bugs ruin nature for them, they rarely mean the walking. They mean <strong>the stop</strong> (lunch, the summit, the view you hiked four miles for, where you're stationary and get eaten), <strong>the bad twenty minutes</strong> (the boggy col, the black fly cloud, the stretch you just endure), and <strong>the aftermath</strong> (the week of itching that makes you not want to go back).</p>
+
+  <p>A clothing plan addresses none of those three. That's why so many plans feel thorough and the hikes still feel awful.</p>
+
+  <div class="thesis">Treat the clothing as a passive barrier you set up once and forget. Spend your actual attention &mdash; and most of your money &mdash; on the stop, the bad twenty minutes, and the aftermath.</div>
+
+  <p><strong>Second correction: don't put your weakest agent on your most-attacked ground.</strong> A recurring move in bad guides is botanical oils and folk remedies on the head, ears and neck. But black flies &mdash; the signature New England misery &mdash; specifically target the hairline, ears and collar, and greenheads and deer flies orbit your head before landing. That zone needs the strongest thing you own, plus mesh.</p>
+
+  <p><strong>Third: this is a seasonal and regional problem, not a constant one.</strong> New England doesn't have &ldquo;bug season.&rdquo; It has five or six overlapping seasons with different enemies, and they don't line up between the Allagash and the Connecticut shoreline. The kit for June 5th in Baxter is not the kit for October 20th in Litchfield County.</p>
+</section>
+
+<section id="calendar">
+  <h2><span class="n">02</span>The New England year</h2>
+  <p class="sub">What's hunting you and when. This chart drives every other decision on this page.</p>
+
+  <div class="chartbox">
+    <div class="scroller"><div class="gantt">
+      <div class="months">
+        <span>Threat</span>
+        <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+        <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+      </div>
+
+      <div class="row">
+        <div class="name">Deer tick<br>nymphs</div>
+        <div class="bar t-dis peak" style="grid-column:6/9"><span>Peak Lyme risk &mdash; poppy-seed sized</span></div>
+      </div>
+      <div class="row">
+        <div class="name">Deer tick<br>adults</div>
+        <div class="bar t-dis" style="grid-column:4/6"><span>Spring wave</span></div>
+        <div class="bar t-dis peak" style="grid-column:11/13"><span>Autumn wave</span></div>
+      </div>
+      <div class="row">
+        <div class="name">Lone star tick<br><i>southern NE</i></div>
+        <div class="bar t-dis" style="grid-column:5/10"><span>Aggressive &mdash; hunts you &middot; alpha-gal</span></div>
+      </div>
+      <div class="row">
+        <div class="name">Black flies<br><i>S. venustum</i></div>
+        <div class="bar t-mis peak" style="grid-column:6/8"><span>The famous one</span></div>
+      </div>
+      <div class="row">
+        <div class="name">Black flies<br><i>S. jenningsi</i></div>
+        <div class="bar t-mis" style="grid-column:9/11"><span>Big rivers, north</span></div>
+      </div>
+      <div class="row">
+        <div class="name">Mosquitoes</div>
+        <div class="bar t-mis faint" style="grid-column:6/7"></div>
+        <div class="bar t-mis peak" style="grid-column:8/10"><span>Dawn &amp; dusk</span></div>
+        <div class="bar t-mis faint" style="grid-column:10/11"></div>
+      </div>
+      <div class="row">
+        <div class="name">Deer &amp; horse<br>flies</div>
+        <div class="bar t-mis" style="grid-column:7/9"><span>Circles your head</span></div>
+      </div>
+      <div class="row">
+        <div class="name">Greenheads<br><i>salt marsh</i></div>
+        <div class="bar t-coast faint" style="grid-column:6/8"></div>
+        <div class="bar t-coast peak" style="grid-column:8/9"><span>Late Jul &ndash; early Aug: brutal</span></div>
+        <div class="bar t-coast faint" style="grid-column:9/10"></div>
+      </div>
+      <div class="row">
+        <div class="name">No-see-ums<br>&amp; midges</div>
+        <div class="bar t-mis" style="grid-column:7/10"><span>Humid, still air</span></div>
+      </div>
+    </div></div>
+
+    <div class="key">
+      <div><span class="swatch t-dis"></span> Disease risk &mdash; act on this</div>
+      <div><span class="swatch t-mis"></span> Misery only &mdash; comfort problem</div>
+      <div><span class="swatch t-coast"></span> Coastal / salt marsh</div>
+      <div><span class="swatch t-mis faint"></span> Shoulder season</div>
+    </div>
+  </div>
+
+  <p>Four things fall out of this chart:</p>
+  <ul class="tight">
+    <li><strong>June is the worst month in northern New England, by a wide margin.</strong> Peak black flies land directly on top of peak nymphal ticks. If you only fully kit up for part of the year, make it mid-May through early July.</li>
+    <li><strong>Late July into early August is the worst window on the coast</strong> &mdash; greenhead peak, deer fly peak, mosquito peak, all at once. Inland is measurably kinder that fortnight.</li>
+    <li><strong>The autumn adult tick wave is the one that catches people.</strong> Bugs are &ldquo;over,&rdquo; so nobody treats clothes or checks &mdash; and adult deer ticks are out on any day above roughly 40&deg;F, right through November. This is also the season where heavy tight-woven pants like denim are genuinely the right tool.</li>
+    <li><strong>Black flies are a fixed, short, predictable window.</strong> Roughly mid-May to the end of June, later at elevation. They bite in daylight only, peaking around 9&ndash;11&nbsp;a.m. and 4&ndash;7&nbsp;p.m. You can schedule around them &mdash; hike midday, hike a ridge, or hike in July.</li>
+  </ul>
+</section>
+
+<section id="regions">
+  <h2><span class="n">03</span>Regional field notes</h2>
+  <p class="sub">New England is not one bug region. It's five, and they need different kits.</p>
+
+  <div class="regions">
+
+    <div class="region">
+      <div class="head"><h3>The North Woods</h3><span class="states">Northern ME &middot; Northeast Kingdom VT</span></div>
+      <p>The worst black flies in the eastern United States, full stop. Baxter, the Allagash, the 100-Mile Wilderness in June are a genuinely different category of experience &mdash; and the mosquitoes that follow in July are the closest thing the Lower 48 has to the Alaskan interior. Maine's Lyme rates are now also among the highest in the nation, so this is not a misery-only zone.</p>
+      <div class="verdict">This is the only region that justifies the full armor loadout below. Head net is not optional in June.</div>
+    </div>
+
+    <div class="region">
+      <div class="head"><h3>The Mountains</h3><span class="states">White Mtns NH &middot; Green Mtns VT &middot; Western ME</span></div>
+      <p>Black flies concentrate in the notches and along running water &mdash; they breed in streams, not ponds, so the brookside trail is the bad one and the dry ridge is the good one. Above treeline in the Presidentials the wind usually ends the problem entirely. Both states carry high Lyme incidence at lower elevations.</p>
+      <div class="verdict">Use elevation and wind tactically. The bug problem is often solvable by route choice alone.</div>
+    </div>
+
+    <div class="region">
+      <div class="head"><h3>Southern New England</h3><span class="states">CT &middot; RI &middot; Eastern MA</span></div>
+      <p>The Lyme epicenter &mdash; the disease is named for Lyme, Connecticut. Milder winters mean a <em>longer</em> tick season rather than a worse one, with adults active in many winter thaws. Black flies are a minor concern here. The emerging story is the <strong>lone star tick</strong> pushing north along the coast, now established on Martha's Vineyard and Nantucket and moving into Bristol and Barnstable counties.</p>
+      <div class="verdict">Lower mesh needs, higher tick discipline. Check year-round, not seasonally.</div>
+    </div>
+
+    <div class="region">
+      <div class="head"><h3>The Salt Marsh Coast</h3><span class="states">Cape Cod &middot; Plum Island &middot; CT &amp; RI shoreline</span></div>
+      <p>Greenhead flies own late July and the first week of August. They breed in the marsh grass, hunt by sight in daylight, bite hard, and shrug off repellent. The control program's traps are literally <strong>black boxes on legs</strong> built to mimic the silhouette of a grazing animal &mdash; which tells you exactly what attracts them, and exactly what not to look like.</p>
+      <div class="verdict">Wear light colors, stay out of the marsh at peak, and know that no repellent solves this one. Mesh and timing do.</div>
+    </div>
+
+    <div class="region">
+      <div class="head"><h3>The Islands</h3><span class="states">Martha's Vineyard &middot; Nantucket &middot; Block Island</span></div>
+      <p>Disproportionately high tick-borne disease for the acreage, and the front line of the alpha-gal problem &mdash; Martha's Vineyard logged more than 500 positive alpha-gal tests in 2024. Babesiosis is notably concentrated here as well.</p>
+      <div class="verdict">Treat island hiking as maximum tick discipline regardless of how benign the landscape looks.</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="threats">
+  <h2><span class="n">04</span>Six threats, six different answers</h2>
+  <p class="sub">Organizing a bug plan head-to-toe is the common structural mistake. The countermeasures differ by <em>insect</em>, not by body part.</p>
+
+  <div class="threats">
+
+    <div class="threat disease">
+      <div class="stripe"></div>
+      <div class="body">
+        <h3>Blacklegged / deer ticks <span class="sci">Ixodes scapularis</span></h3>
+        <p>The main event. New England carries some of the highest per-capita Lyme rates in the country, plus anaplasmosis and babesiosis. Ticks don't fly, jump, or drop from trees &mdash; they sit on low brush and leaf litter with their forelegs out and grab you as you brush past. Transmission generally requires <strong>24&ndash;48 hours of attachment</strong>, which is the single most useful fact in this document.</p>
+        <div class="counter"><b>Counter</b>Permethrin on fabric, a sealed ankle, and above all the post-hike check. Because attachment time is the variable, <em>finding them the same day beats repelling them.</em></div>
+      </div>
+    </div>
+
+    <div class="threat disease">
+      <div class="stripe"></div>
+      <div class="body">
+        <h3>Lone star ticks <span class="sci">Amblyomma americanum</span></h3>
+        <p>Newer, and behaviorally different in a way that matters: they don't just wait, they <strong>actively hunt</strong> &mdash; they'll detect you and crawl toward you across open ground. Spreading north along the coast with the warming climate. They carry ehrlichiosis and, notably, <strong>alpha-gal syndrome</strong>, a lasting allergy to red meat and dairy triggered by a sugar in their saliva.</p>
+        <div class="counter"><b>Counter</b>Same permethrin discipline, but don't assume standing still on a clear patch is safe ground. In southern and coastal New England, treat every break spot as contested.</div>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="stripe"></div>
+      <div class="body">
+        <h3>Black flies <span class="sci">Simulium spp.</span></h3>
+        <p>The northern New England signature. They breed in <em>running</em> water, so they're worst near streams and in the notches. They do <strong>not</strong> bite through clothing &mdash; they crawl <em>into</em> openings: collar, cuffs, hairline, ears, sock line. Drawn to CO&#8322; and dark colors, grounded by wind above roughly 10&nbsp;mph, and fondest of humid, overcast, calm days.</p>
+        <div class="counter"><b>Counter</b>Mechanical, not chemical. Seal every opening and carry a head net. Repellent helps at the margins; mesh ends the argument.</div>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="stripe"></div>
+      <div class="body">
+        <h3>Mosquitoes <span class="sci">Aedes &amp; Culex spp.</span></h3>
+        <p>The one where running hot genuinely matters &mdash; they track CO&#8322; from 30+ feet, then switch to heat and skin odor up close. They're weak fliers. Worst at dawn and dusk, near standing water, in still air. New England also carries a small but real EEE and West Nile risk in late summer, concentrated in southeastern Massachusetts.</p>
+        <div class="counter"><b>Counter</b>The only threat where a skin repellent is the primary tool &mdash; and the only one that a breeze, a fan, or an area repellent meaningfully defeats.</div>
+      </div>
+    </div>
+
+    <div class="threat">
+      <div class="stripe"></div>
+      <div class="body">
+        <h3>Deer &amp; horse flies <span class="sci">Chrysops &amp; Tabanus spp.</span></h3>
+        <p>Largely immune to the whole repellent conversation. They hunt visually, are drawn to dark moving shapes, and orbit the <strong>highest point on you</strong> &mdash; your head &mdash; before committing.</p>
+        <div class="counter"><b>Counter</b>Exploit the orbit. A sticky patch on the back of the hat crown catches them, because you are the bait and the trap sits above your ears. Effective, cheap, and it looks ridiculous.</div>
+      </div>
+    </div>
+
+    <div class="threat coast">
+      <div class="stripe"></div>
+      <div class="body">
+        <h3>Greenhead flies <span class="sci">Tabanus nigrovittatus</span></h3>
+        <p>The coastal specialist, and the one honest guides admit they can't fully solve. Salt marsh breeders, daylight hunters, persistent, and <strong>resistant to essentially every repellent</strong>. Season runs June to September with a savage peak in the last two weeks of July and the first week of August.</p>
+        <div class="counter"><b>Counter</b>Timing and mesh only. Avoid marsh-edge trails at peak, don't present a large dark silhouette, and accept that this is the one fight you win by not showing up.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="terrain">
+  <h2><span class="n">05</span>Terrain that does the work for you</h2>
+  <p class="sub">Free protection, available by route choice. The most underrated section of any bug plan.</p>
+
+  <ul class="tight">
+    <li><strong>Wind is the best repellent ever invented.</strong> Above roughly 10&nbsp;mph, black flies are grounded and mosquitoes can't hold a line. Exposed ridges, summits, lakeshores with a breeze, and anywhere above treeline are frequently bug-free while the valley below is unbearable.</li>
+    <li><strong>Elevation sheds bugs.</strong> The Presidentials above treeline in June can be pleasant while Crawford Notch is a black fly nightmare. Climbing out of it is a legitimate tactic.</li>
+    <li><strong>Know which water you're near.</strong> Black flies need <em>moving</em> water; mosquitoes need <em>standing</em> water. A rushing brookside trail is a black fly trail. A beaver pond or a boggy col is a mosquito trail. Dry ledge and open hardwood are neither.</li>
+    <li><strong>Midday is the gap in northern New England.</strong> Black flies peak 9&ndash;11&nbsp;a.m. and 4&ndash;7&nbsp;p.m.; mosquitoes own dawn and dusk. Roughly 11&nbsp;a.m. to 3&nbsp;p.m. is the quiet window in black fly season.</li>
+    <li><strong>Sun and dryness suppress almost everything except deer flies.</strong> Open ledge beats shaded understory for a lunch stop, every time.</li>
+    <li><strong>After the first hard frost, the flying insects are done</strong> &mdash; but ticks are not. October and November are the best hiking of the year in New England and simultaneously a peak tick wave. Don't let the absence of mosquitoes tell you the season's over.</li>
+  </ul>
+</section>
+
+<section id="moments">
+  <h2><span class="n">06</span>The three moments</h2>
+  <p class="sub">Where the misery actually lives, and the three purchases that address it</p>
+
+  <h3>The stop &mdash; a portable bubble</h3>
+  <p>This is the highest-leverage item in the plan and it's missing from most guides. A butane or rechargeable <strong>Thermacell</strong> vaporizes a pyrethroid into a roughly 15&ndash;20 foot bubble. In a peer-reviewed field trial it cut biting rates by a mean of about <strong>92&ndash;93%</strong>, holding above 90% for six hours. It's useless while walking &mdash; it needs still air and a few minutes to establish &mdash; which is exactly why it's perfect for the part you're losing: lunch, the summit, the overlook, camp.</p>
+  <p><em>Usage detail that matters:</em> light it the moment you stop, not after you start getting bitten. It needs about ten minutes to build the zone.</p>
+
+  <h3>The bad twenty minutes &mdash; mesh, reachable in five seconds</h3>
+  <p>A head net weighs an ounce, costs about eight dollars, and is the only thing that reliably ends a black fly encounter. The reason people own one and still suffer is <strong>storage</strong>: if it's buried in the pack, you'll tough it out rather than stop and dig. Put it in a shoulder-strap or hip-belt pocket where it comes out without breaking stride. And it must be held <em>off your skin</em> by a stiff 3-inch brim, or black flies simply bite through the mesh where it touches.</p>
+
+  <h3>The aftermath &mdash; treat the reaction, not just the bite</h3>
+  <p>For people who hate bugs, the lasting damage is usually the histamine reaction, not the bite &mdash; black fly bites in particular can itch for weeks on sensitive skin. A <strong>thermal bite pen</strong> (a ~51&deg;C pulse that disrupts the local histamine response) works well if used within minutes. Pair it with an oral antihistamine and 1% hydrocortisone. This is the cheapest part of the kit and probably does the most for whether you want to go out again next weekend.</p>
+</section>
+
+<section id="kit">
+  <h2><span class="n">07</span>The kit</h2>
+  <p class="sub">Built for two. Tiered so you can stop at any line and still have a coherent system.</p>
+
+  <div class="tier">
+    <div class="tierhead"><h3>Tier 1 &mdash; Core</h3><span class="cost">~$180&ndash;220 for two</span></div>
+    <p>Buy all of this before the next hike. Nothing here is optional.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Item</th><th class="q">Qty</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>0.5% permethrin spray</b><span class="why">Sawyer or Repel, 24&nbsp;oz trigger</span></td><td class="q">2 btl</td><td>Heavy fabric drinks it. Budget a bottle per person per season.</td></tr>
+        <tr><td><b>20% picaridin lotion</b><span class="why">Sawyer or Natrapel</span></td><td class="q">2</td><td>Lotion, not spray &mdash; longer wear, no overspray onto gear.</td></tr>
+        <tr><td><b>25&ndash;30% DEET, small pump</b></td><td class="q">1</td><td>Black fly insurance. Skin only &mdash; it degrades pack webbing and melts lenses.</td></tr>
+        <tr><td><b>Head nets</b><span class="why">Sea to Summit Nano, Ben's InvisiNet</span></td><td class="q">2</td><td>Best value on the page. One each, in a strap pocket.</td></tr>
+        <tr><td><b>Stiff 3&Prime; brim hats</b></td><td class="q">2</td><td>Light khaki or sage. The brim's job is holding mesh off your face.</td></tr>
+        <tr><td><b>Loose nylon long-sleeve shirts</b></td><td class="q">2</td><td>Replaces cotton. Loose drape, buttoned cuffs.</td></tr>
+        <tr><td><b>Tall crew socks</b><span class="why">Merino or dense synthetic</span></td><td class="q">4 pr</td><td>Light colored. These get the heaviest permethrin treatment you own.</td></tr>
+        <tr><td><b>Fine-point tweezers</b><span class="why">Not drugstore slant-tip</span></td><td class="q">2</td><td>Needle points. Slant-tips squeeze the tick's gut contents into you.</td></tr>
+        <tr><td><b>Tick Key or similar</b></td><td class="q">2</td><td>Keychain plus pack. Redundancy is the point.</td></tr>
+        <tr><td><b>Mini lint roller</b></td><td class="q">1</td><td>The best tool for pulling nymphs off fabric in the car.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="tier">
+    <div class="tierhead"><h3>Tier 2 &mdash; The three moments</h3><span class="cost">~$120&ndash;160</span></div>
+    <p>The tier that changes how the hikes <em>feel</em>. If budget is tight, cut Tier 1's nice-to-haves before you cut this.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Item</th><th class="q">Qty</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>Thermacell</b><span class="why">EX90 rechargeable, or E55</span></td><td class="q">1</td><td>Shared. Comes out at every stop.</td></tr>
+        <tr><td><b>Deer fly patches</b><span class="why">TredNot or equivalent</span></td><td class="q">1 pk</td><td>Back of the hat crown, July only.</td></tr>
+        <tr><td><b>Gaiters</b><span class="why">Low trail gaiters, permethrin-treated</span></td><td class="q">2 pr</td><td>Strictly better than tucking, and they solve the heavy-cuff problem.</td></tr>
+        <tr><td><b>Thermal bite pen</b><span class="why">Bite Away or similar</span></td><td class="q">1</td><td>Shared. Use within minutes of the bite.</td></tr>
+        <tr><td><b>Cetirizine + 1% hydrocortisone</b></td><td class="q">1 ea</td><td>In the pouch, not the medicine cabinet at home.</td></tr>
+        <tr><td><b>Foam sit pads</b></td><td class="q">2</td><td>So you never sit on leaf litter or a mossy log. Quietly one of the best tick moves there is.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="note">
+    <span class="lab">On heavy cotton and denim</span>
+    <p>Denim's tight weave genuinely defeats mosquito mouthparts, and light-wash denim shows nymphs well. But it's heavy cotton: it soaks sweat, stops breathing, dries slowly, and chafes wet. For anyone who runs hot, in July, it raises the exact thermal signature you're trying to hide. In the mountains there's also a real safety edge &mdash; wet cotton at elevation is how people get hypothermic on 50&deg;F days.</p>
+    <p><strong>The split that keeps the preference intact:</strong> treated nylon from May through September, denim in the <strong>October&ndash;November adult tick wave</strong>, where it's cool enough that the breathability penalty vanishes and the tight weave is pure upside. Jeans, in the season they're actually the right tool.</p>
+  </div>
+</section>
+
+<section id="armor">
+  <h2><span class="n">08</span>Tier 3 &mdash; full armor</h2>
+  <p class="sub">The maximalist loadout. Overkill for a Connecticut day hike; correct for Maine in June.</p>
+
+  <p>There is a point &mdash; the Allagash in June, a bog crossing in the Northeast Kingdom, a still humid evening in the North Woods &mdash; where no repellent regime is sufficient and the answer is <strong>total mechanical exclusion</strong>. The good news is that a full bug suit is light, cheap relative to most outdoor gear, and packs to about the size of a rain shell.</p>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Layer</th><th>Item</th><th>Why this piece</th></tr></thead>
+    <tbody>
+      <tr><td><b>Head</b></td><td>Bug jacket with integrated hood net<span class="why">Original Bug Shirt Elite, Sea to Summit</span></td><td>An attached hood beats a separate net &mdash; no gap at the collar, which is exactly where black flies get in.</td></tr>
+      <tr><td><b>Torso</b></td><td>The same jacket, permethrin-treated</td><td>Mesh stops the bite; permethrin kills what lands. The two together are redundant on purpose.</td></tr>
+      <tr><td><b>Hands</b></td><td>Thin sun gloves, treated</td><td>The forgotten gap. Backs of hands are heavily bitten and rarely covered by anything.</td></tr>
+      <tr><td><b>Neck</b></td><td>Lightweight buff or neck gaiter</td><td>Seals the hood-to-shirt junction and covers the pulse points repellent has to be reapplied to.</td></tr>
+      <tr><td><b>Legs</b></td><td>Treated nylon pants, or dedicated bug pants</td><td>Loose drape. Never tight base layers &mdash; mosquitoes bite straight through tight knits.</td></tr>
+      <tr><td><b>Ankles</b></td><td>Treated gaiters over treated socks</td><td>Two sealed layers at the single most important gap on the body.</td></tr>
+      <tr><td><b>Feet</b></td><td>Boots sprayed to the laces and tongue</td><td>The highest-payoff treatment you can perform &mdash; see the evidence note below.</td></tr>
+      <tr><td><b>Perimeter</b></td><td>Thermacell at every halt</td><td>Armor handles movement; the bubble handles rest. You need both.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <span class="lab">Where the evidence is strongest</span>
+    <p>In the controlled trial, permethrin-treated <strong>sneakers and socks made subjects 73.6&times; less likely to be bitten</strong> by a tick &mdash; compared with 4.74&times; for treated shorts and just 2.17&times; for a treated T-shirt. A whole treated outfit came in at 3.36&times; overall. If you treat one thing in your entire kit, treat your feet and ankles. The armor above is built outward from that fact.</p>
+  </div>
+
+  <p>The practical compromise: keep the bug jacket and gloves permanently stuffed in a pack pocket from mid-May to mid-July. You will wear them perhaps three times a season, and on those three days they will be the difference between turning around and finishing the hike.</p>
+</section>
+
+<section id="pack">
+  <h2><span class="n">09</span>Packs, and the pouch that makes this work</h2>
+
+  <p>Two things about the packs themselves that almost no guide mentions:</p>
+  <ul class="tight">
+    <li><strong>Treat the shoulder straps and hip belt with permethrin.</strong> They're fabric, they press against you all day, and they wipe brush at exactly tick height. Nobody treats them. <em>Never</em> put DEET on straps or buckles &mdash; it degrades nylon and plastic.</li>
+    <li><strong>Buy light-colored packs.</strong> Same reason as light clothing &mdash; you can see what's crawling on them. Dark packs also read as attractive targets to deer flies and greenheads, which hunt large dark silhouettes.</li>
+  </ul>
+
+  <h3>The bug pouch</h3>
+  <p>One small zip pouch per person, about sandwich-bag size, that lives permanently in the pack lid and gets restocked &mdash; never unpacked. The whole system fails when the pieces are scattered across two packs and a glovebox.</p>
+  <ul class="tight">
+    <li>Picaridin lotion, travel size &middot; DEET pump in June</li>
+    <li>Fine-point tweezers &middot; Tick Key</li>
+    <li>Zip bag and a Sharpie <em>for the tick you pull off</em> &mdash; date it, keep it</li>
+    <li>Cetirizine, hydrocortisone, a few alcohol wipes</li>
+    <li>Deer fly patches, July</li>
+  </ul>
+  <p>The head net does <strong>not</strong> go in the pouch. It goes in an outside strap pocket where you can reach it without stopping. That distinction is the entire reason people actually use them.</p>
+  <p>Keep a <strong>contractor trash bag in the car</strong> as well. Hiked-in clothes go straight into it at the trailhead and straight to the dryer at home &mdash; they never touch the house, the couch, or the laundry pile.</p>
+</section>
+
+<section id="protocol">
+  <h2><span class="n">10</span>The protocol</h2>
+  <p class="sub">A genuine sequence &mdash; each step depends on the one before it.</p>
+
+  <ol class="proto">
+    <li>
+      <span class="when">Night before</span>
+      <h3>Verify, don't re-treat</h3>
+      <p>Check the permethrin date written inside each garment. Home spray is good for roughly <strong>6 weeks or 6 washes</strong>; if it's past, treat tonight, because it needs to dry fully. Check the forecast: humid, overcast and calm is a black fly day; wind over ~10&nbsp;mph grounds them.</p>
+    </li>
+    <li>
+      <span class="when">Trailhead &mdash; 5 minutes</span>
+      <h3>Skin, seal, stage</h3>
+      <p>Picaridin on neck, ears, jawline, hands and wrists. Sunscreen first, repellent second, never a combo product. Socks over the cuffs or gaiters on. Head net into the strap pocket. Deer fly patch on the hat crown if it's July.</p>
+    </li>
+    <li>
+      <span class="when">On trail</span>
+      <h3>Walk the center, sit on foam</h3>
+      <p>Stay off the brushy margins &mdash; that's where ticks are questing. Never sit directly on logs or leaf litter; that's what the pads are for. Light the Thermacell <em>as you stop</em>, not once you're being bitten. Quick visual leg-and-partner check at each break.</p>
+    </li>
+    <li>
+      <span class="when">Car, before driving</span>
+      <h3>Strip the obvious</h3>
+      <p>Lint-roll pants and socks. Outer layer into the contractor bag. This is the step that keeps nymphs out of the car seats and out of the house.</p>
+    </li>
+    <li>
+      <span class="when">Home &mdash; within two hours</span>
+      <h3>Dryer first, then wash</h3>
+      <p><strong>Ten minutes on high heat kills ticks; washing does not reliably do so</strong> &mdash; they survive cold and even warm cycles. So the dryer comes <em>before</em> the washer, not after.</p>
+    </li>
+    <li>
+      <span class="when">Same day</span>
+      <h3>The full-body check, mutually</h3>
+      <p>Shower, then check each other. Hit the spots people skip: scalp and hairline, behind and inside the ears, armpits, navel, waistband line, groin, behind the knees. Nymphs are the size of a poppy seed. This step is where the 24&ndash;48 hour window is actually won &mdash; everything upstream of it just improves your odds.</p>
+    </li>
+    <li>
+      <span class="when">If one is attached</span>
+      <h3>Pull, save, date, watch</h3>
+      <p>Fine-point tweezers as close to the skin as possible, steady upward pull &mdash; no twisting, no petroleum jelly, no match. Drop it in the zip bag with the date. Watch for rash or fever for 30 days. Given New England's rates, it's worth asking your doctor <em>in advance</em> about single-dose doxycycline prophylaxis, which has a <strong>72-hour window</strong> &mdash; you want to know the plan before you're standing there with a tick in a bag on a Saturday.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="tinker">
+  <h2><span class="n">11</span>For the tinkerer</h2>
+  <p class="sub">Four real upgrades, roughly in order of payoff per hour spent</p>
+
+  <h3>1. The soak method &mdash; double your permethrin's life</h3>
+  <p>Instead of spraying, dilute a permethrin <em>concentrate</em> and soak garments in a sealed bucket or bag. It saturates fibers far more evenly than surface spray and lasts roughly <strong>twice as long &mdash; about 12 washes versus 6</strong>. It's also dramatically cheaper per garment, and it's the only practical way to treat something as thirsty as denim or a pack harness.</p>
+  <div class="note warn">
+    <span class="lab">Dilution safety &mdash; read before buying concentrate</span>
+    <p>Concentrates ship at wildly different strengths &mdash; 10% is the hiker standard, but agricultural bottles run 36.8%. <strong>Follow the specific bottle's label for the dilution ratio</strong>; never carry a ratio over from a different product. Target working strength is 0.5%.</p>
+    <p>Wet permethrin is <strong>highly toxic to cats</strong>, and to fish and bees. Dry treated items away from any cat, and pour spent soak liquid down a household drain &mdash; never a storm drain, never outdoors near water.</p>
+  </div>
+
+  <h3>2. Send your clothes out for factory treatment</h3>
+  <p>The best answer for heavy garments. Insect Shield runs a mail-in service that factory-treats <em>your own</em> clothing with a bonded process rated for about <strong>70 washes</strong>, versus 6 for home spray. Mail in the jeans, both sets of hiking clothes, and any removable pack straps once, and the permethrin-maintenance chore disappears for years. Highest-leverage tinker move on this page.</p>
+
+  <h3>3. Trial a frontier repellent against your picaridin</h3>
+  <p>Two EPA-registered actives outside the DEET/picaridin duopoly:</p>
+  <ul class="tight">
+    <li><strong>2-undecanone (BioUD)</strong>, derived from wild tomato. A 7.75% formulation is commercially available for skin and gear; its label claims about 5 hours on mosquitoes and 2 on ticks. In published comparisons it outperformed DEET against both blacklegged and lone star ticks &mdash; genuinely interesting, and easy to A/B test with one of you on each.</li>
+    <li><strong>Nootkatone</strong>, from grapefruit and Alaska yellow cedar, developed by the CDC and EPA-registered in 2020. Consumer products have been slow to materialize, so treat this as one to watch rather than buy.</li>
+  </ul>
+
+  <h3>4. Small mechanical experiments</h3>
+  <ul class="tight">
+    <li><strong>A clip-on battery fan at rest stops.</strong> Mosquitoes are famously weak fliers; moving air defeats them without chemistry. Complements the Thermacell rather than competing with it.</li>
+    <li><strong>Drop the fragrance chain.</strong> Unscented soap, shampoo, deodorant, and detergent for hiking clothes. Also worth knowing: beer consumption measurably increases mosquito attraction &mdash; relevant to the post-hike patio, if not the trail.</li>
+    <li><strong>Log it.</strong> You'll be running several variables at once. A note on your phone after each hike &mdash; date, trail, what you wore, what bit you, how bad &mdash; will tell you in one season which parts of this are doing the work. Most of the bad advice in this field exists because nobody keeps records.</li>
+  </ul>
+</section>
+
+<section id="skip">
+  <h2><span class="n">12</span>The skip list</h2>
+  <p class="sub">Widely repeated advice that doesn't survive contact with the evidence</p>
+
+  <div class="tablewrap"><table class="skip">
+    <thead><tr><th>Recommendation</th><th>Why it's out</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Vanilla extract on the ears</b><span class="verdict">Folklore</span></td>
+        <td>Not EPA-registered, no robust evidence as a standalone repellent. Vanillin is a <em>fixative</em> &mdash; it slows other oils evaporating &mdash; which is why products like Bug Soother pair it with lemongrass. Worse, it puts your weakest agent on the zone black flies attack hardest.</td>
+      </tr>
+      <tr>
+        <td><b>Repellent oil along the hat brim</b><span class="verdict">Invented mechanism</span></td>
+        <td>There is no &ldquo;downward vapor curtain.&rdquo; Oil of lemon eucalyptus is a legitimate registered <em>skin</em> repellent, but it's volatile, short-lived, off-label on fabric &mdash; and it's an eye irritant you'd be placing directly above your eyes, where sweat carries it down.</td>
+      </tr>
+      <tr>
+        <td><b>Mirrored lenses to break insect tracking</b><span class="verdict">No basis</span></td>
+        <td>No entomological support for the &ldquo;hollow cavity&rdquo; theory. Dark, shiny, moving objects <em>do</em> draw deer flies and greenheads, but that's visual hunting and mirroring doesn't help. Wear wraparounds for branches and repellent drip &mdash; good reasons, different ones.</td>
+      </tr>
+      <tr>
+        <td><b>&ldquo;Cotton traps heat, intensifying your CO&#8322;&rdquo;</b><span class="verdict">Wrong premise</span></td>
+        <td>CO&#8322; output is metabolic. Fabric doesn't change how much you exhale. Cotton is poor hiking fabric for real reasons &mdash; weight, wet, warmth &mdash; so the conclusion survives, but don't reason from this.</td>
+      </tr>
+      <tr>
+        <td><b>Petroleum jelly, matches, or twisting a tick out</b><span class="verdict">Actively harmful</span></td>
+        <td>All of these can make the tick regurgitate into the bite, which is the opposite of what you want. Steady upward pull with fine-point tweezers, nothing else.</td>
+      </tr>
+      <tr>
+        <td><b>Bug guides citing shopping links</b><span class="verdict">Not sources</span></td>
+        <td>A recurring tell: recommendations footnoted to Google Shopping product URLs, Facebook posts, Reddit threads, or pest-control company blogs. When a guide's format demands a mechanism for every item, a mechanism gets generated whether or not one exists.</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <span class="lab">What conventional advice gets right &mdash; keep all of it</span>
+    <p>Permethrin on fabric at 0.5%. Picaridin at 20% on skin, and its plastic-safety advantage over DEET. Loose fit over tight knits. Light colors for spotting nymphs. Socks over the cuffs. And saturating the footwear &mdash; the best-supported single action in the entire field.</p>
+  </div>
+</section>
+
+<footer>
+  <p><span class="lab">Sources</span></p>
+  <p>Permethrin efficacy from <a href="https://academic.oup.com/jme/article/48/2/327/893233">Tick Bite Protection With Permethrin-Treated Summer-Weight Clothing</a> (J. Med. Entomol.) and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6119117/">Contact Irritancy and Toxicity of Permethrin-Treated Clothing</a>. Black fly phenology from <a href="https://extension.unh.edu/resource/black-flies-fact-sheet">UNH Extension</a>; tick biology from <a href="https://extension.unh.edu/resource/biology-and-management-ticks-new-hampshire-fact-sheet">UNH Extension</a> and <a href="https://www.cdc.gov/mosquitoes/prevention/about-permethrin-treated-clothing-and-gear.html">CDC</a>. Area-repellent data from <a href="https://pubmed.ncbi.nlm.nih.gov/14765672/">Field Evaluation of an Area Repellent System (Thermacell)</a>. Soak durability from <a href="https://sectionhiker.com/permethrin-soak-method-guide/">SectionHiker</a> and <a href="https://ask.ifas.ufl.edu/publication/IN1467">UF/IFAS</a>. Novel actives from <a href="https://pubmed.ncbi.nlm.nih.gov/19140016/">Efficacy of BioUD against three species of ixodid ticks</a> and <a href="https://www.epa.gov/pesticides/nootkatone-now-registered-epa">EPA</a>. Lone star range expansion from <a href="https://www.nejm.org/doi/full/10.1056/NEJMp1911661">NEJM</a> and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11432020/">a Massachusetts coastal island study</a>. Greenhead biology from <a href="https://www.ccmcp.net/greenhead-fly-control/pages/greenhead-biology">Cape Cod Mosquito Control Project</a> and <a href="https://www.nemassmosquito.org/north-shore-greenhead-fly-program">NE Mass Mosquito Control</a>.</p>
+  <p style="margin-top:14px">Not medical advice. Follow every product label; it governs over anything written here.</p>
+</footer>
+
+</div>
+</body>
+</html>
