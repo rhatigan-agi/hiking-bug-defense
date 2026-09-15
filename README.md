@@ -2,7 +2,9 @@
 
 A layered, seasonal field manual for hiking New England without getting eaten — ticks, black flies, mosquitoes, deer flies and salt-marsh greenheads, each with a different countermeasure.
 
-**Read it:** [index.html](index.html) — a single self-contained page. Enable GitHub Pages on this repo and it publishes as-is.
+### → [**Read it: rhatigan-agi.github.io/hiking-bug-defense**](https://rhatigan-agi.github.io/hiking-bug-defense/)
+
+A single self-contained page, served from `main` via GitHub Pages. Works offline once loaded, and the loadout checklist remembers your ticks per device.
 
 ## What this is
 
